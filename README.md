@@ -72,13 +72,40 @@ Later levels introduce more echoes and more complex circuits.
 - **Web Audio API** — generated sound effects.
 - **localStorage** — local settings and completion progress.
 
-The currently published version is a self-contained browser build. The standalone game runs without any third-party runtime dependencies.
+The standalone game runs without third-party runtime dependencies. The repository also includes the full TypeScript source, generated modular web build and automated engine tests.
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for details on simulation, echo replay, circuit rules, and data formats.
 
 ## Development
 
-The repository includes a playable HTML release and project configuration. Separate TypeScript source files and tests are not yet fully present in this repository, so the build and test scripts require those files before they can run successfully.
+Clone the repository and install Node.js 20 or later, then run:
+
+```bash
+npm install
+npm run build
+npm test
+npm start
+```
+
+Open **http://localhost:4173** to play the modular development build.
+
+The game source lives in `src/`, automated tests in `tests/`, and the generated website in `docs/`. Run `npm run build` after changing TypeScript. The self-contained `index.html` at the repository root is the GitHub Pages release. The `docs/` build is intended for local development and modular hosting.
+
+### Project structure
+
+```text
+src/                       TypeScript game engine, renderer and UI
+tests/                     Gameplay logic and solvability checks
+docs/                      Modular browser build
+examples/                  Saved replay examples
+index.html                 Standalone browser release
+ARCHITECTURE.md            Simulation and architecture reference
+CONTRIBUTING.md            Development and contribution guidelines
+```
+
+### Automated checks
+
+The GitHub Actions workflow compiles the TypeScript and runs the Node.js test suite on pushes and pull requests.
 
 ## Hosting with GitHub Pages
 
