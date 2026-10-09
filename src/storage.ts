@@ -16,7 +16,7 @@ export function loadProgress(): Progress {
     if (!stored || typeof stored !== 'object') return { ...DEFAULT, wins: {} };
     const p = stored as Partial<Progress>;
     return {
-      unlocked: typeof p.unlocked === 'number' && Number.isFinite(p.unlocked) ? Math.max(1, Math.min(9, Math.floor(p.unlocked))) : 1,
+      unlocked: typeof p.unlocked === 'number' && Number.isFinite(p.unlocked) ? Math.max(1, Math.min(12, Math.floor(p.unlocked))) : 1,
       wins: p.wins && typeof p.wins === 'object' ? p.wins : {},
       sound: typeof p.sound === 'boolean' ? p.sound : true,
       reducedMotion: typeof p.reducedMotion === 'boolean' ? p.reducedMotion : false,
@@ -34,7 +34,7 @@ export function clearProgress(): Progress {
 export function recordWin(p: Progress, index: number, id: string, score: Score): Progress {
   const old = p.wins[id];
   const better = !old || score.echoes < old.echoes || (score.echoes === old.echoes && score.moves < old.moves);
-  const next: Progress = { ...p, unlocked: Math.max(p.unlocked, Math.min(9, index + 2)), wins: { ...p.wins, [id]: better ? score : old } };
+  const next: Progress = { ...p, unlocked: Math.max(p.unlocked, Math.min(12, index + 2)), wins: { ...p.wins, [id]: better ? score : old } };
   saveProgress(next);
   return next;
 }

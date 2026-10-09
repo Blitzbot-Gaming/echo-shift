@@ -3,6 +3,7 @@ import { advance, availableRewinds, currentLoopEnded, exportReplay, gatesOpen, i
 import { clearProgress, loadProgress, recordWin, saveProgress } from './storage.js';
 import { Soundscape } from './audio.js';
 import { GameRenderer } from './renderer.js';
+import { LevelLab } from './lab-ui.js';
 const $ = (selector) => {
     const element = document.querySelector(selector);
     if (!element)
@@ -15,6 +16,8 @@ let inspectedTick = null;
 let hintVisible = false;
 let toastTimer = 0;
 let modalType = null;
+let customMode = false;
+const lab = new LevelLab();
 const sound = new Soundscape();
 sound.enabled = progress.sound;
 const renderer = new GameRenderer($('#gameCanvas'), () => state, () => progress.reducedMotion);
@@ -36,6 +39,7 @@ function changeLevel(index) {
         notify('Chamber locked. Clear the previous chamber first.');
         return;
     }
+    customMode = false;
     state = newSession(LEVELS[index]);
     inspectedTick = null;
     renderer.setInspectTick(null);
@@ -69,7 +73,8 @@ function input(action) {
     if (result.event === 'finish') {
         sound.play('win');
         const index = LEVELS.indexOf(state.level);
-        progress = recordWin(progress, index, state.level.id, { moves: totalMoves(state), echoes: state.echoes.length });
+        if (!customMode)
+            progress = recordWin(progress, index, state.level.id, { moves: totalMoves(state), echoes: state.echoes.length });
         renderHud();
         window.setTimeout(() => openModal('win'), 500);
         return;
@@ -149,7 +154,7 @@ function renderHud() {
     const index = LEVELS.indexOf(state.level);
     $('#chamberNumber').textContent = state.level.id;
     $('#chamberName').textContent = state.level.name;
-    $('#levelLabel').textContent = `CHAMBER ${state.level.id} / 09`;
+    $('#levelLabel').textContent = customMode ? 'CUSTOM EXPERIMENT' : `CHAMBER ${state.level.id} / ${LEVELS.length}`;
     $('#actLabel').textContent = state.level.chapter;
     $('#briefing').textContent = state.level.briefing;
     $('#stepsValue').textContent = `${String(state.tick).padStart(2, '0')} / ${String(state.level.maxTicks).padStart(2, '0')}`;
@@ -167,8 +172,8 @@ function renderHud() {
     $('#undoButton').toggleAttribute('disabled', state.frames.length === 0 || state.complete);
     $('#retryButton').toggleAttribute('disabled', state.frames.length === 0 || state.complete);
     $('#soundButton').textContent = progress.sound ? 'SOUND ON' : 'SOUND OFF';
-    $('#prevLevel').toggleAttribute('disabled', index === 0);
-    $('#nextLevel').toggleAttribute('disabled', index + 1 >= progress.unlocked || index + 1 >= LEVELS.length);
+    $('#prevLevel').toggleAttribute('disabled', customMode || index === 0);
+    $('#nextLevel').toggleAttribute('disabled', customMode || index + 1 >= progress.unlocked || index + 1 >= LEVELS.length);
     const slots = $('#echoSlots');
     slots.innerHTML = Array.from({ length: state.level.maxEchoes }, (_, i) => {
         const echo = state.echoes[i];
@@ -176,7 +181,8 @@ function renderHud() {
     }).join('') || `<div class="empty-echo">NO ECHO RECORDINGS IN THIS CHAMBER<br><small>Your first move changes everything.</small></div>`;
     const sources = Object.entries(state.level.gates);
     const enabled = gatesOpen(state);
-    $('#circuitList').innerHTML = sources.length ? sources.map(([gate, plates]) => `<div class="circuit"><span class="circuit-gate">${gate}</span><span>GATE ${gate}</span><span class="circuit-state ${enabled.has(gate) ? 'open' : ''}">${enabled.has(gate) ? 'ONLINE' : plates.map(p => p.toUpperCase()).join(' + ') + ' REQUIRED'}</span></div>`).join('') : '<div class="circuit-no-gates">NO ACTIVE CIRCUITS · DIRECT EXTRACTION</div>';
+    const portals = [...new Set(state.level.map.join('').match(/[0-9]/g) ?? [])];
+    $('#circuitList').innerHTML = (sources.length ? sources.map(([gate, plates]) => `<div class="circuit"><span class="circuit-gate">${gate}</span><span>GATE ${gate}</span><span class="circuit-state ${enabled.has(gate) ? 'open' : ''}">${enabled.has(gate) ? 'ONLINE' : plates.map(p => p.toUpperCase()).join(' + ') + ' REQUIRED'}</span></div>`).join('') : '<div class="circuit-no-gates">NO ACTIVE CIRCUITS · DIRECT EXTRACTION</div>') + portals.map(p => `<div class="circuit"><span class="circuit-gate" style="color:#dbb5ff;border-color:#78539d">${p}</span><span>RIFT PORTAL ${p}</span><span class="circuit-state open">PAIRED</span></div>`).join('');
     renderTracks();
 }
 function closeModal() {
@@ -196,7 +202,7 @@ function openModal(name) {
     overlay.setAttribute('aria-hidden', 'false');
     const root = $('#modalBody');
     if (name === 'welcome') {
-        root.innerHTML = `<div class="welcome-glow"></div>${modalShell('TRANSMISSION 001 / SYSTEM ONLINE', 'YOU ARE NOT <em>ALONE.</em>', 'Your future depends on the decisions your past self makes. Record a timeline. Leave an echo. Escape the experiment.', `<div class="welcome-features"><span><b>09</b> CHAMBERS</span><span><b>03</b> ACTS</span><span><b>∞</b> POSSIBILITIES</span></div>
+        root.innerHTML = `<div class="welcome-glow"></div>${modalShell('TRANSMISSION 001 / SYSTEM ONLINE', 'YOU ARE NOT <em>ALONE.</em>', 'Your future depends on the decisions your past self makes. Record a timeline. Leave an echo. Escape the experiment.', `<div class="welcome-features"><span><b>12</b> CHAMBERS</span><span><b>04</b> ACTS</span><span><b>∞</b> POSSIBILITIES</span></div>
       <div class="modal-actions"><button class="button primary huge" data-action="start">ENTER THE EXPERIMENT <span>↗</span></button><button class="button subdued" data-action="help">HOW TO PLAY</button></div>`, `<p class="micro-note">DESIGNED & ENGINEERED WITH ZERO EXTERNAL GAME ASSETS</p>`)}`;
     }
     else if (name === 'help') {
@@ -205,19 +211,24 @@ function openModal(name) {
         <div class="help-item"><span class="help-num">02</span><div><h3>RECORD AN ECHO</h3><p>Stand on a switch and press <kbd>R</kbd>. Your entire previous path becomes an echo that replays each beat in the next loop.</p></div></div>
         <div class="help-item"><span class="help-num">03</span><div><h3>COORDINATE</h3><p>Echoes can activate switches and keep holding their last position. Gates only open when all required switches are occupied.</p></div></div>
         <div class="help-item"><span class="help-num">04</span><div><h3>REWRITE YOUR STRATEGY</h3><p>Press <kbd>Z</kbd> to undo, <kbd>X</kbd> to retry the active loop, or use the timeline inspector to study a recorded move.</p></div></div>
+        <div class="help-item"><span class="help-num">05</span><div><h3>RIFT PORTALS</h3><p>Numbered portals come in pairs. Step on one to arrive at its twin; recorded echoes replay the arrival tile.</p></div></div>
+        <div class="help-item"><span class="help-num">06</span><div><h3>LEVEL LAB</h3><p>Open Level Lab from the main menu to draw custom chambers, playtest, or share them as JSON.</p></div></div>
       </div><div class="modal-actions"><button class="button primary" data-action="close">UNDERSTOOD <span>→</span></button></div>`);
+    }
+    else if (name === 'editor') {
+        lab.mount(root, (level) => { customMode = true; state = newSession(level); closeModal(); setInspection(null); renderHud(); notify('CUSTOM EXPERIMENT LOADED'); }, notify);
     }
     else if (name === 'levels') {
         root.innerHTML = modalShell('THE EXPERIMENT / CHAMBER INDEX', 'SELECT A <em>TIMELINE.</em>', 'Complete chambers to unlock more of the experiment.', `<div class="levels-grid">${LEVELS.map((level, i) => `<button class="level-card ${i >= progress.unlocked ? 'locked' : ''} ${state.level.id === level.id ? 'active' : ''}" data-level="${i}" ${i >= progress.unlocked ? 'disabled' : ''}>
-        <span class="level-index">${level.id} / 09</span><span class="level-medal">${progress.wins[level.id] ? '◆ CLEARED' : i >= progress.unlocked ? '⌁ LOCKED' : '◉ AVAILABLE'}</span>
+        <span class="level-index">${level.id} / ${LEVELS.length}</span><span class="level-medal">${progress.wins[level.id] ? '◆ CLEARED' : i >= progress.unlocked ? '⌁ LOCKED' : '◉ AVAILABLE'}</span>
         <strong>${level.name}</strong><small>${level.subtitle}</small><span class="level-bottom">${i < progress.unlocked ? `${level.maxEchoes} ECHO SLOTS` : 'UNAVAILABLE'} <span>↗</span></span></button>`).join('')}</div>`);
     }
     else if (name === 'win') {
         const index = LEVELS.indexOf(state.level);
-        const final = index === LEVELS.length - 1;
-        const score = progress.wins[state.level.id];
+        const final = !customMode && index === LEVELS.length - 1;
+        const score = customMode ? undefined : progress.wins[state.level.id];
         root.innerHTML = `<div class="victory-mark">✧</div>${modalShell('EXTRACTION LOG / CHAMBER CLEARED', final ? 'PARADOX <em>RESOLVED.</em>' : 'TIMELINE <em>STABILIZED.</em>', final ? 'You outsmarted the entire experiment. Every version of you made this moment possible.' : 'A path appeared where there was none. Your past selves did their part.', `<div class="result-grid"><div><strong>${String(totalMoves(state)).padStart(2, '0')}</strong><small>TOTAL BEATS</small></div><div><strong>${state.echoes.length}</strong><small>ECHOES USED</small></div><div><strong>${score ? String(score.moves).padStart(2, '0') : '—'}</strong><small>PERSONAL BEST</small></div></div>
-      <div class="modal-actions">${!final ? `<button class="button primary" data-action="next">NEXT CHAMBER <span>↗</span></button>` : `<button class="button primary" data-action="levels">REVISIT CHAMBERS <span>↗</span></button>`}<button class="button subdued" data-action="replay">REPLAY CHAMBER</button><button class="button subdued" data-action="export">SAVE REPLAY</button></div>`)}`;
+      <div class="modal-actions">${customMode ? `<button class="button primary" data-action="editor">EDIT CHAMBER <span>↗</span></button>` : !final ? `<button class="button primary" data-action="next">NEXT CHAMBER <span>↗</span></button>` : `<button class="button primary" data-action="levels">REVISIT CHAMBERS <span>↗</span></button>`}<button class="button subdued" data-action="replay">REPLAY CHAMBER</button><button class="button subdued" data-action="export">SAVE REPLAY</button></div>`)}`;
     }
     else if (name === 'settings') {
         root.innerHTML = modalShell('ENVIRONMENT CONFIGURATION', 'SYSTEM <em>SETTINGS.</em>', 'Adjust the experiment to your preferences.', `<div class="setting-row"><div><strong>SYNTHESIZED SOUND</strong><span>Generated entirely in the browser. No audio files.</span></div><button class="button outlined" data-action="toggle-sound">${progress.sound ? 'ENABLED' : 'DISABLED'}</button></div>
@@ -244,11 +255,11 @@ function exportCurrent() {
     notify('Replay exported as JSON.');
 }
 const buttonActions = {
-    start: () => closeModal(), close: () => closeModal(), help: () => openModal('help'), levels: () => openModal('levels'),
+    start: () => closeModal(), close: () => closeModal(), help: () => openModal('help'), levels: () => openModal('levels'), editor: () => openModal('editor'),
     settings: () => openModal('settings'), next: () => changeLevel(Math.min(LEVELS.length - 1, LEVELS.indexOf(state.level) + 1)),
     replay: () => { closeModal(); performRestart(); },
     reset: () => openModal('reset'), 'confirm-reset': () => openModal('reset'),
-    'clear-save': () => { progress = clearProgress(); state = newSession(LEVELS[0]); closeModal(); renderHud(); notify('Progress erased. Experiment rebooted.'); },
+    'clear-save': () => { progress = clearProgress(); customMode = false; state = newSession(LEVELS[0]); closeModal(); renderHud(); notify('Progress erased. Experiment rebooted.'); },
     'toggle-sound': () => { progress = { ...progress, sound: !progress.sound }; saveProgress(progress); sound.enabled = progress.sound; openModal('settings'); renderHud(); },
     'toggle-motion': () => { progress = { ...progress, reducedMotion: !progress.reducedMotion }; saveProgress(progress); openModal('settings'); },
     rewind: () => performRewind(), undo: () => performUndo(), retry: () => performRetry(), restart: () => performRestart(),
@@ -259,7 +270,7 @@ const buttonActions = {
             if (data.length > 50000)
                 throw new Error('Replay is too large');
             state = importReplay(state.level, data);
-            if (state.complete)
+            if (state.complete && !customMode)
                 progress = recordWin(progress, LEVELS.indexOf(state.level), state.level.id, { moves: totalMoves(state), echoes: state.echoes.length });
             closeModal();
             setInspection(null);

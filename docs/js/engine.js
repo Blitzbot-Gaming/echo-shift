@@ -5,6 +5,19 @@ export function same(a, b) { return a.x === b.x && a.y === b.y; }
 export function tile(level, point) {
     return level.map[point.y]?.[point.x] ?? '#';
 }
+/** Portal endpoints always come in pairs. Only players teleport; echo frames store the resolved landing tile. */
+export function portalDestination(level, point) {
+    const symbol = tile(level, point);
+    if (!/^[0-9]$/.test(symbol))
+        return null;
+    for (let y = 0; y < level.map.length; y++) {
+        for (let x = 0; x < level.map[y].length; x++) {
+            if ((x !== point.x || y !== point.y) && level.map[y][x] === symbol)
+                return { x, y };
+        }
+    }
+    return null;
+}
 export function locate(level, symbol) {
     for (let y = 0; y < level.map.length; y++) {
         const x = level.map[y].indexOf(symbol);
@@ -93,7 +106,7 @@ export function advance(state, action) {
             blocked = true;
         }
         else {
-            player = target;
+            player = portalDestination(state.level, target) ?? target;
         }
     }
     const complete = tile(state.level, player) === 'X';

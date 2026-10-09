@@ -2,7 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 const path = new URL('./docs/', import.meta.url);
 let html = await readFile(new URL('index.html', path), 'utf8');
 const css = await readFile(new URL('styles.css', path), 'utf8');
-const modules = ['levels', 'engine', 'storage', 'audio', 'renderer', 'app'];
+const modules = ['levels', 'engine', 'storage', 'audio', 'renderer', 'editor', 'lab-ui', 'app'];
 let js = '';
 for (const module of modules) {
   let source = await readFile(new URL(`js/${module}.js`, path), 'utf8');

@@ -19,6 +19,36 @@
 #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,18px);z-index:60;opacity:0;visibility:hidden;transition:.25s;background:#172c36;border:1px solid #649787;box-shadow:0 13px 40px #0007;color:#b3ffdf;padding:14px 23px;text-align:center;max-width:calc(100vw - 32px);font:800 10px/1.5 ui-monospace,monospace;letter-spacing:.6px;pointer-events:none}#toast.visible{transform:translate(-50%,0);opacity:1;visibility:visible}.modal-overlay{position:fixed;inset:0;z-index:50;background:#030b12dc;backdrop-filter:blur(13px);display:none;align-items:center;justify-content:center;padding:22px;overflow:auto}.modal-overlay.show{display:flex}.modal-panel{position:relative;overflow:hidden;width:100%;max-width:620px;max-height:calc(100vh - 44px);overflow-y:auto;padding:38px;border:1px solid #436678;background:radial-gradient(ellipse 60% 45% at 95% 3%,#1b515637,transparent),#0e1927;box-shadow:0 30px 90px #000a}.modal-panel:before,.modal-panel:after{content:"";position:absolute;height:22px;width:22px;pointer-events:none}.modal-panel:before{left:9px;top:9px;border-left:1px solid #8bdcc7;border-top:1px solid #8bdcc7}.modal-panel:after{right:9px;bottom:9px;border-right:1px solid #8bdcc7;border-bottom:1px solid #8bdcc7}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.modal-head .eyebrow{margin:0;color:#98d6cc;font-size:10px}.icon-button{width:30px;height:30px;display:grid;place-items:center;border:1px solid #3c5966;color:#a1c4c3}.modal-panel h2{font:700 clamp(28px,5vw,46px)/1.08 'Space Grotesk',sans-serif;letter-spacing:-1.8px;margin:25px 0 14px}.modal-description{color:#a2b9c3;line-height:1.8;font-size:13px;max-width:510px;margin-bottom:25px}.modal-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:23px}.button.huge{min-height:52px;padding:0 24px}.button>span:last-child{font-size:16px}.welcome-features{display:flex;gap:0;border:1px solid #2b4853;background:#111f2c;margin:29px 0}.welcome-features>span{flex:1;padding:19px 8px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;border-right:1px solid #2b4853;font:700 9px ui-monospace,monospace;letter-spacing:1px;color:#8daab4}.welcome-features>span:last-child{border:0}.welcome-features b{font:700 31px 'Space Grotesk',sans-serif;color:var(--mint);letter-spacing:-2px}.micro-note{font:700 9px ui-monospace,monospace;color:#607988;letter-spacing:1.5px;margin:20px 0 0}.help-grid{border-top:1px solid #2e4655}.help-item{display:flex;gap:16px;padding:17px 0;border-bottom:1px solid #2e4655}.help-num{font:700 20px 'Space Grotesk',sans-serif;color:#6fa7a9;flex:0 0 32px}.help-item h3{font:800 12px ui-monospace,monospace;letter-spacing:.5px;margin-bottom:8px}.help-item p{font-size:12px;line-height:1.7;color:#91aebb;margin:0}.help-item kbd{margin-right:2px}.levels-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.level-card{min-height:153px;border:1px solid #365364;text-align:left;padding:14px;background:#142434;display:flex;flex-direction:column;gap:8px;transition:.15s}.level-card:hover:not(:disabled){border-color:var(--mint);background:#203744;transform:translateY(-2px)}.level-card.active{border-color:#a3edd3}.level-card.locked{background:#111c27;border-color:#283b48}.level-index,.level-medal,.level-bottom{font:700 9px ui-monospace,monospace;letter-spacing:.4px;color:#7c9fae}.level-medal{color:#93d9b8}.level-card.locked .level-medal{color:#58727e}.level-card strong{font:700 16px 'Space Grotesk',sans-serif;margin-top:auto;color:#e2f1ef}.level-card small{font-size:11px;color:#8ba5b1}.level-bottom{border-top:1px solid #304454;padding-top:10px;display:flex;justify-content:space-between;margin-top:5px}.victory-mark{font-size:50px;text-align:center;color:var(--mint);filter:drop-shadow(0 0 16px #89efb562);margin-bottom:3px}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#344d59;border:1px solid #344d59}.result-grid>div{background:#172733;padding:23px 5px;display:flex;align-items:center;flex-direction:column;gap:8px}.result-grid strong{font:700 33px 'Space Grotesk',sans-serif;color:var(--mint)}.result-grid small{font:700 9px ui-monospace,monospace;letter-spacing:.7px;color:#8da8b4}.setting-row{padding:18px 0;border-top:1px solid #35505c;display:flex;align-items:center;justify-content:space-between;gap:12px}.setting-row>div{display:flex;flex-direction:column;gap:7px}.setting-row strong{font:800 11px ui-monospace,monospace;letter-spacing:.4px}.setting-row span{color:#8fa9b6;font-size:11px}.danger-setting strong{color:#ffb4a8}.button.danger{border-color:#9c696b;color:#ffb8a8}.button.danger-solid{background:#db766b;color:#130d10}.import-label{display:block;font:700 10px ui-monospace,monospace;letter-spacing:1px;color:#a5d6d8;margin-bottom:10px}textarea{width:100%;background:#081320;color:#d3f0eb;border:1px solid #3c5e69;border-radius:0;resize:vertical;font:12px/1.5 ui-monospace,monospace;padding:14px}
 @media(max-width:1290px){.game-layout{grid-template-columns:minmax(0,1fr) 310px;gap:15px}.side-card{padding:15px}.control-panel{flex-wrap:wrap}.stage-heading{font-size:9px}.primary-controls{gap:6px}.button{padding:0 12px}.intro h1{font-size:43px}}@media(max-width:1020px){.game-layout{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr;align-items:start}.mission-card{grid-row:span 2}.site-wrap{padding:0 24px}.intro h1{font-size:clamp(34px,6vw,53px)}}@media(max-width:650px){.site-wrap{padding:0 14px}.site-header{height:72px;gap:8px}.brand-mark{width:31px;height:31px;border-radius:6px}.brand-mark i{top:13px;left:6px;right:6px;height:2px}.brand-mark i:nth-child(2){height:17px;left:13px;top:6px;width:2px}.brand{gap:9px}.brand-text{font-size:15px}.brand-text small{font-size:6px;letter-spacing:1.25px}.header-middle{display:none}.header-actions{gap:6px}.nav-button{font-size:9px;min-height:34px;padding:0 9px}.hide-small{display:none}.page-main{padding:33px 0 42px}.intro{gap:12px;padding-bottom:25px}.intro h1{font-size:clamp(29px,7.1vw,41px);letter-spacing:-1.6px}.intro .eyebrow{font-size:8px;letter-spacing:.6px;line-height:1.7;margin-bottom:13px}.intro-blurb{font-size:11px}.intro-aside{display:none}.stage-header{height:46px;padding:0 10px}.stage-heading{gap:6px;font-size:8px;letter-spacing:0}.stage-heading strong{font-size:8px}.stage-nav-divider{height:13px}.stage-mini-nav{gap:0}.stage-mini-nav button{width:29px}.stage-footer{padding:0 12px;height:58px}.stage-state strong{font-size:9px}.stage-time{min-width:108px}.meter{width:108px}.stage-time small,.stage-state small{font-size:8px}.control-panel{padding:9px;gap:8px}.primary-controls{width:100%;gap:5px}.primary-controls .button{flex:1;padding:0 6px;font-size:9px;gap:4px;min-height:40px}.button .btn-icon{font-size:16px}.primary-controls kbd{display:none}.secondary-controls{width:100%;text-align:right}.secondary-controls .ghost-button{padding:2px 5px;font-size:9px}.mobile-controls{display:flex;align-items:center;justify-content:space-between;margin-top:12px;border:1px solid var(--line);background:#101c28;padding:13px}.mobile-dpad{display:grid;grid-template-columns:repeat(3,44px);grid-template-rows:repeat(2,44px);gap:4px}.mobile-dpad button,.mobile-wait{background:#203645;border:1px solid #3b6875;font:700 21px 'Space Grotesk',sans-serif;color:#b6f6dd;touch-action:manipulation}.mobile-dpad button:active,.mobile-wait:active{background:#456f6b}.mobile-dpad button[data-move="up"]{grid-column:2;grid-row:1}.mobile-dpad button[data-move="left"]{grid-column:1;grid-row:2}.mobile-dpad button[data-move="down"]{grid-column:2;grid-row:2}.mobile-dpad button[data-move="right"]{grid-column:3;grid-row:2}.mobile-wait{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:15px 26px;font:800 12px ui-monospace,monospace}.mobile-wait small{font-size:8px;color:#81a9b1}.control-hint{display:none}.sidebar{grid-template-columns:1fr;gap:10px}.mission-card{grid-row:auto}.side-card{padding:18px}.site-footer{font-size:8px;gap:8px;flex-wrap:wrap}.site-footer>span:nth-child(2){display:none}.modal-overlay{padding:10px}.modal-panel{padding:24px;max-height:calc(100vh - 20px)}.modal-panel h2{letter-spacing:-1px}.modal-description{font-size:12px}.levels-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.level-card{min-height:140px}.modal-actions>.button{white-space:normal}.welcome-features>span{font-size:8px;letter-spacing:0}.welcome-features b{font-size:27px}}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+/* Level Lab: built-in drag-to-paint chamber workshop */
+.modal-panel:has(.editor-workspace){max-width:1050px;padding:clamp(16px,3vw,34px)}
+.editor-workspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:17px;margin-top:14px}
+.editor-board-wrap{background:#0a1420;border:1px solid #456879;padding:12px;min-width:0;overflow-x:auto;touch-action:pan-y}
+.editor-board{display:grid;grid-template-columns:repeat(13,minmax(23px,1fr));gap:3px;min-width:340px;user-select:none}
+.editor-tile{display:grid;place-items:center;aspect-ratio:1;background:#192c3b;border:1px solid #365365;min-height:22px;font:800 clamp(9px,1.5vw,14px) ui-monospace,monospace;color:#aec4d1;border-radius:3px;touch-action:none;transition:border-color .07s,background .07s}
+.editor-tile:hover,.editor-tile:focus-visible{border-color:#c8ffe4;outline:1px solid #a2f4d1;outline-offset:0}
+.editor-tile[data-tile="#"]{background:#344252;color:#61788a}
+.editor-tile[data-tile="S"]{background:#285946;color:#a8ffdc}
+.editor-tile[data-tile="X"]{background:#1a6b54;color:#e1ffe3}
+.editor-tile[data-tile="a"],.editor-tile[data-tile="b"],.editor-tile[data-tile="c"]{background:#185671;color:#c6f1ff}
+.editor-tile[data-tile="A"],.editor-tile[data-tile="B"],.editor-tile[data-tile="C"]{background:#643b42;color:#ffe2d1}
+.editor-tile[data-tile="0"],.editor-tile[data-tile="1"]{background:#57346c;color:#e1b8ff}
+.editor-toolbar{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:12px}
+.editor-tool{padding:9px 1px;border:1px solid #385365;background:#142b3a;font:800 13px ui-monospace,monospace;color:#c7dfe6}
+.editor-tool.active{background:#3a7565;border-color:#bbffdc;color:#fff}
+.editor-tool:hover{border-color:#b8ffe3}
+.editor-tool-hint{font-size:10px;color:#96adbc;line-height:1.7;margin-top:9px}
+.editor-field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;font:700 10px ui-monospace,monospace;letter-spacing:.5px;color:#8fb8bf}
+.editor-field input,.editor-field select{width:100%;background:#091a29;border:1px solid #416171;border-radius:0;padding:10px;color:#e0fff5;font:500 13px sans-serif}
+.editor-settings{padding:14px;background:#101f2d;border:1px solid #2f4c60}
+.editor-settings strong{display:block;color:#d0eee8;font-size:12px;margin-bottom:13px}
+.editor-error{border:1px solid #b77a69;background:#51302344;padding:10px;color:#ffd0be;font-size:11px;line-height:1.5;margin-top:9px}
+.editor-valid{border:1px solid #478e78;background:#153c32;padding:10px;color:#b5ffdb;font-size:11px;margin-top:9px}
+.editor-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.editor-actions .button{flex:1;min-height:42px}
+.editor-file-input{margin-top:8px;width:100%;font-size:11px;color:#a9cfcb}
+@media(max-width:710px){.editor-workspace{grid-template-columns:1fr}.editor-board{min-width:300px}.editor-toolbar{grid-template-columns:repeat(6,1fr)}.modal-panel:has(.editor-workspace){max-height:95vh}}
+
+@media(max-width:650px){.nav-button[data-action="editor"]{font-size:8px;padding:0 7px}}
 </style>
   <title>ECHO//SHIFT — The Paradox Protocol</title>
 </head>
@@ -29,9 +59,9 @@
         <span class="brand-mark"><i></i><i></i></span>
         <span class="brand-text">ECHO<span>//</span>SHIFT<small>THE PARADOX PROTOCOL</small></span>
       </a>
-      <div class="header-middle"><span class="status-light"></span><span>EXPERIMENT ACTIVE</span><span class="header-slash">/</span><span>BUILD 1.0</span></div>
+      <div class="header-middle"><span class="status-light"></span><span>EXPERIMENT ACTIVE</span><span class="header-slash">/</span><span>BUILD 1.1</span></div>
       <nav class="header-actions" aria-label="Main navigation">
-        <button data-action="levels" class="nav-button">CHAMBERS <span>↗</span></button>
+        <button data-action="editor" class="nav-button">LEVEL LAB <span>✦</span></button><button data-action="levels" class="nav-button">CHAMBERS <span>↗</span></button>
         <button data-action="help" class="nav-button hide-small">HOW TO PLAY <span>?</span></button>
         <button data-action="settings" class="nav-button nav-settings" aria-label="Settings" title="Settings">⚙</button>
       </nav>
@@ -44,14 +74,14 @@
           <h1>THE PAST IS <em>PLAYABLE.</em></h1>
           <p class="intro-blurb">A tactical puzzle experiment in which every choice becomes another version of you.</p>
         </div>
-        <div class="intro-aside"><span class="digital-counter">09<span> / 09</span></span><small>CHAMBERS IN THE EXPERIMENT</small><span id="progressLabel" class="progress-tiny">0 / 9 CLEARED</span></div>
+        <div class="intro-aside"><span class="digital-counter">12<span> / 12</span></span><small>CHAMBERS IN THE EXPERIMENT</small><span id="progressLabel" class="progress-tiny">0 / 12 CLEARED</span></div>
       </section>
 
       <section class="game-layout" aria-label="Game area">
         <div class="main-column">
           <div class="stage-panel">
             <div class="stage-header">
-              <div class="stage-heading"><span class="stage-live-dot"></span><span id="actLabel">ACT I · THE ARRIVAL</span><span class="stage-divider">/</span><strong id="levelLabel">CHAMBER 01 / 09</strong></div>
+              <div class="stage-heading"><span class="stage-live-dot"></span><span id="actLabel">ACT I · THE ARRIVAL</span><span class="stage-divider">/</span><strong id="levelLabel">CHAMBER 01 / 12</strong></div>
               <div class="stage-mini-nav"><button id="prevLevel" data-action="prev-level" title="Previous chamber" aria-label="Previous chamber">‹</button><span class="stage-nav-divider"></span><button id="nextLevel" data-action="next-level" title="Next chamber" aria-label="Next chamber">›</button></div>
             </div>
             <div class="canvas-frame">
@@ -271,6 +301,57 @@ const LEVELS = [
         ],
         maxTicks: 23, maxEchoes: 3, gates: { C: ['a', 'b', 'c'] }, accent: '#ffc277',
     },
+    {
+        id: '10', chapter: 'ACT IV · THE RIFT', name: 'Folded Space', subtitle: 'Distance is an illusion.',
+        briefing: 'Paired rift portals fold the chamber in two. Step into either matching digit to emerge at the other.',
+        hint: 'The violet rift connects the two halves of the map. Enter the portal marked 0.',
+        map: [
+            '#############',
+            '#S....#.....#',
+            '#.....#.....#',
+            '#..0..#..0..#',
+            '#.....#...X.#',
+            '#.....#.....#',
+            '#.....#.....#',
+            '#.....#.....#',
+            '#############',
+        ],
+        maxTicks: 15, maxEchoes: 0, gates: {}, accent: '#c49cff',
+    },
+    {
+        id: '11', chapter: 'ACT IV · THE RIFT', name: 'Pocket Dimension', subtitle: 'Leave a signal behind.',
+        briefing: 'A rift reaches an isolated switch. Record your echo there, then return to cross the sealed gate.',
+        hint: 'Take portal 0 to reach switch a. Record the echo, take the portal again and cross gate A.',
+        map: [
+            '###############',
+            '#S.....#......#',
+            '#....0.#......#',
+            '#.....##......#',
+            '#.....#a#.....#',
+            '#.....#0A..X..#',
+            '#.....###.....#',
+            '#......#......#',
+            '###############',
+        ],
+        maxTicks: 18, maxEchoes: 1, gates: { A: ['a'] }, accent: '#a9c5ff',
+    },
+    {
+        id: '12', chapter: 'ACT IV · THE RIFT', name: 'Dual Entanglement', subtitle: 'Two rifts. One exit.',
+        briefing: 'Two pocket dimensions hide the only switches that can open the last circuit.',
+        hint: 'First take portal 0 to hold a. Next take portal 1 to hold b. On the final loop enter 0, wait until both echoes activate their switches, then cross C.',
+        map: [
+            '###############',
+            '#S.....#......#',
+            '#..0...#......#',
+            '#.....#a#.....#',
+            '#.....#0#.....#',
+            '#.....#.C..X..#',
+            '#..1..#1#.....#',
+            '#.....#b#.....#',
+            '###############',
+        ],
+        maxTicks: 21, maxEchoes: 2, gates: { C: ['a', 'b'] }, accent: '#d19afa',
+    },
 ];
 function getLevel(id) {
     const level = LEVELS.find(level => level.id === id);
@@ -294,12 +375,20 @@ function validateLevel(level) {
         errors.push('Exactly one exit required');
     if (level.maxTicks < 1 || level.maxEchoes < 0)
         errors.push('Invalid timeline limits');
+    if (!Number.isInteger(level.maxTicks) || level.maxTicks > 60 || !Number.isInteger(level.maxEchoes) || level.maxEchoes > 3)
+        errors.push('Timeline limits exceed supported range');
+    if (width > 21 || height > 15)
+        errors.push('Map must be no larger than 21×15');
     for (const symbol of flat) {
-        if ('#.SX'.includes(symbol) || /^[a-z]$/.test(symbol))
+        if ('#.SX'.includes(symbol) || /^[a-z0-9]$/.test(symbol))
             continue;
         if (/^[A-Z]$/.test(symbol) && level.gates[symbol])
             continue;
         errors.push(`Unknown map symbol ${symbol}`);
+    }
+    for (const digit of new Set(flat.match(/[0-9]/g) ?? [])) {
+        if (flat.split(digit).length !== 3)
+            errors.push(`Portal ${digit} requires exactly two endpoints`);
     }
     for (const [door, plates] of Object.entries(level.gates)) {
         if (!flat.includes(door))
@@ -320,6 +409,19 @@ const DIRECTIONS = {
 function same(a, b) { return a.x === b.x && a.y === b.y; }
 function tile(level, point) {
     return level.map[point.y]?.[point.x] ?? '#';
+}
+/** Portal endpoints always come in pairs. Only players teleport; echo frames store the resolved landing tile. */
+function portalDestination(level, point) {
+    const symbol = tile(level, point);
+    if (!/^[0-9]$/.test(symbol))
+        return null;
+    for (let y = 0; y < level.map.length; y++) {
+        for (let x = 0; x < level.map[y].length; x++) {
+            if ((x !== point.x || y !== point.y) && level.map[y][x] === symbol)
+                return { x, y };
+        }
+    }
+    return null;
 }
 function locate(level, symbol) {
     for (let y = 0; y < level.map.length; y++) {
@@ -409,7 +511,7 @@ function advance(state, action) {
             blocked = true;
         }
         else {
-            player = target;
+            player = portalDestination(state.level, target) ?? target;
         }
     }
     const complete = tile(state.level, player) === 'X';
@@ -474,7 +576,7 @@ function loadProgress() {
             return { ...DEFAULT, wins: {} };
         const p = stored;
         return {
-            unlocked: typeof p.unlocked === 'number' && Number.isFinite(p.unlocked) ? Math.max(1, Math.min(9, Math.floor(p.unlocked))) : 1,
+            unlocked: typeof p.unlocked === 'number' && Number.isFinite(p.unlocked) ? Math.max(1, Math.min(12, Math.floor(p.unlocked))) : 1,
             wins: p.wins && typeof p.wins === 'object' ? p.wins : {},
             sound: typeof p.sound === 'boolean' ? p.sound : true,
             reducedMotion: typeof p.reducedMotion === 'boolean' ? p.reducedMotion : false,
@@ -498,7 +600,7 @@ function clearProgress() {
 function recordWin(p, index, id, score) {
     const old = p.wins[id];
     const better = !old || score.echoes < old.echoes || (score.echoes === old.echoes && score.moves < old.moves);
-    const next = { ...p, unlocked: Math.max(p.unlocked, Math.min(9, index + 2)), wins: { ...p.wins, [id]: better ? score : old } };
+    const next = { ...p, unlocked: Math.max(p.unlocked, Math.min(12, index + 2)), wins: { ...p.wins, [id]: better ? score : old } };
     saveProgress(next);
     return next;
 }
@@ -651,7 +753,7 @@ class GameRenderer {
         ctx.fillText('SPATIAL ANOMALY DETECTED', W - 45, 53);
         ctx.textAlign = 'left';
         ctx.fillStyle = '#25394f';
-        ctx.fillText('SYNC_GRID · v1.0', 42, H - 48);
+        ctx.fillText('SYNC_GRID · v1.1', 42, H - 48);
         ctx.textAlign = 'right';
         ctx.fillText('ECHO//SHIFT  —  THE PARADOX PROTOCOL', W - 42, H - 48);
         ctx.textAlign = 'left';
@@ -740,6 +842,22 @@ class GameRenderer {
                     ctx.fillStyle = active ? color : '#7295aa';
                     ctx.fillText(symbol.toUpperCase(), px + size - 10, py + size - 10);
                     ctx.textAlign = 'left';
+                }
+                if (/^[0-9]$/.test(symbol)) {
+                    const pulse = this.reduceMotion() ? 0 : Math.sin(t * 2.2 + Number(symbol)) * .08;
+                    ctx.save();
+                    ctx.shadowColor = '#bc9cff';
+                    ctx.shadowBlur = 19;
+                    ring(ctx, cx, cy, size * (.31 + pulse), '#d3aaff', 3);
+                    ctx.shadowBlur = 0;
+                    ring(ctx, cx, cy, size * .20, '#8760d7', 2);
+                    disk(ctx, cx, cy, size * .10, '#6341a5');
+                    ctx.fillStyle = '#fff2ff';
+                    ctx.font = '700 12px ui-monospace, monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(symbol, cx, cy);
+                    ctx.textAlign = 'left';
+                    ctx.restore();
                 }
                 if (symbol in state.level.gates) {
                     const active = open.has(symbol);
@@ -855,6 +973,286 @@ class GameRenderer {
     }
 }
 
+// editor
+const EDITOR_FORMAT = 'echo-shift/level-v1';
+const EDITOR_TILES = ['#', '.', 'S', 'X', 'a', 'b', 'c', 'A', 'B', 'C', '0', '1'];
+function newDraft() {
+    return {
+        name: 'Untitled Experiment',
+        map: [
+            '#############',
+            '#S....#.....#',
+            '#.....#.....#',
+            '#..a..#.....#',
+            '#.....A...X.#',
+            '#.....#.....#',
+            '#.....#.....#',
+            '#.....#.....#',
+            '#############',
+        ],
+        maxTicks: 20,
+        maxEchoes: 1,
+        circuits: { A: 'a', B: 'b', C: 'a,b' },
+    };
+}
+function paintTile(draft, x, y, tile) {
+    if (!EDITOR_TILES.includes(tile) || !Number.isInteger(x) || !Number.isInteger(y) ||
+        y < 0 || y >= draft.map.length || x < 0 || x >= draft.map[0].length)
+        return draft;
+    if (draft.map[y][x] === tile)
+        return draft;
+    const map = draft.map.map(row => row.split(''));
+    if (tile === 'S' || tile === 'X') {
+        for (const row of map)
+            for (let i = 0; i < row.length; i++)
+                if (row[i] === tile)
+                    row[i] = '.';
+    }
+    map[y][x] = tile;
+    return { ...draft, map: map.map(row => row.join('')) };
+}
+function draftToLevel(draft) {
+    const gates = {};
+    const map = draft.map.join('');
+    for (const gate of ['A', 'B', 'C']) {
+        if (map.includes(gate))
+            gates[gate] = draft.circuits[gate].split(/[\s,]+/).filter(Boolean);
+    }
+    return {
+        id: 'LAB', chapter: 'ANOMALY LAB · CUSTOM EXPERIMENT', name: draft.name.slice(0, 35).trim() || 'Untitled Experiment',
+        subtitle: 'Community-designed experiment.', briefing: 'A chamber you designed. Test the timeline.',
+        hint: 'Use rewind to leave echoes on switches. Paired digits are two-way portals.',
+        map: [...draft.map], maxTicks: draft.maxTicks, maxEchoes: draft.maxEchoes, gates, accent: '#c49cff',
+    };
+}
+function validateDraft(draft) {
+    const level = draftToLevel(draft);
+    const errors = validateLevel(level);
+    if (!/^[\w ,.'!?:-]{1,35}$/.test(draft.name.trim()))
+        errors.push('Name must be 1–35 basic characters');
+    if (level.map.length < 5 || (level.map[0]?.length ?? 0) < 7)
+        errors.push('Map is too small');
+    if (level.map.some(row => /[^#.SXabcABC01]/.test(row)))
+        errors.push('Unsupported editor tile');
+    for (const [gate, plates] of Object.entries(level.gates)) {
+        if (plates.some(plate => !/^[abc]$/.test(plate)))
+            errors.push(`Gate ${gate} requires switch names a, b or c`);
+    }
+    return [...new Set(errors)];
+}
+function exportLevel(draft) {
+    return JSON.stringify({ format: EDITOR_FORMAT, ...draft }, null, 2);
+}
+/** Parse a shared level without accepting arbitrary properties, long strings or huge grids. */
+function importLevel(json) {
+    if (json.length > 15000)
+        throw new Error('Level file exceeds 15 KB');
+    const raw = JSON.parse(json);
+    if (!raw || typeof raw !== 'object')
+        throw new Error('Invalid level file');
+    const data = raw;
+    if (data.format !== EDITOR_FORMAT || typeof data.name !== 'string' || data.name.length > 35 ||
+        !Array.isArray(data.map) || data.map.length !== 9 ||
+        !data.map.every(row => typeof row === 'string' && row.length === 13) ||
+        !Number.isInteger(data.maxTicks) || !Number.isInteger(data.maxEchoes) ||
+        !data.circuits || typeof data.circuits !== 'object')
+        throw new Error('Invalid level structure');
+    const gateData = data.circuits;
+    const circuits = {};
+    for (const gate of ['A', 'B', 'C']) {
+        const value = gateData[gate];
+        if (typeof value !== 'string' || value.length > 20)
+            throw new Error(`Invalid gate ${gate}`);
+        circuits[gate] = value;
+    }
+    const draft = { name: data.name, map: data.map, maxTicks: data.maxTicks,
+        maxEchoes: data.maxEchoes, circuits };
+    const errors = validateDraft(draft);
+    if (errors.length)
+        throw new Error(errors.join(' · '));
+    return draft;
+}
+
+// lab-ui
+const STORAGE_KEY = 'echoshift.level-lab.v1';
+const names = {
+    '#': 'Wall', '.': 'Floor', S: 'Start', X: 'Exit', a: 'Switch a', b: 'Switch b', c: 'Switch c',
+    A: 'Gate A', B: 'Gate B', C: 'Gate C', '0': 'Portal 0', '1': 'Portal 1',
+};
+const escape = (s) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+function restore() {
+    try {
+        const s = localStorage.getItem(STORAGE_KEY);
+        if (!s || s.length > 15000)
+            return newDraft();
+        const raw = JSON.parse(s);
+        if (!raw || typeof raw !== 'object')
+            return newDraft();
+        const data = raw;
+        if (typeof data.name !== 'string' || data.name.length > 35 ||
+            !Array.isArray(data.map) || data.map.length !== 9 ||
+            !data.map.every(row => typeof row === 'string' && row.length === 13 && /^[#.SXabcABC01]+$/.test(row)) ||
+            typeof data.maxTicks !== 'number' || typeof data.maxEchoes !== 'number' ||
+            !data.circuits || typeof data.circuits !== 'object' ||
+            !['A', 'B', 'C'].every(k => typeof data.circuits?.[k] === 'string' && data.circuits[k].length <= 20))
+            return newDraft();
+        return data;
+    }
+    catch {
+        return newDraft();
+    }
+}
+class LevelLab {
+    draft = restore();
+    brush = '#';
+    listeners = null;
+    save() {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.draft));
+        }
+        catch { /* private mode */ }
+    }
+    render() {
+        const errors = validateDraft(this.draft);
+        const tiles = this.draft.map.map((row, y) => [...row].map((tile, x) => `<button class="editor-tile" type="button" data-editor-cell="${x},${y}" data-tile="${tile}" aria-label="Column ${x + 1}, row ${y + 1}, ${names[tile] ?? 'tile'}" title="${names[tile] ?? 'tile'}">${tile === '.' ? '·' : tile}</button>`).join('')).join('');
+        return `<div class="modal-head"><span class="eyebrow">LEVEL LAB / BUILD YOUR OWN EXPERIMENT</span><button data-action="close" class="icon-button modal-close" aria-label="Close editor">✕</button></div>
+      <h2>BUILD A <em>TIMELINE.</em></h2><p class="modal-description">Click or drag across the grid to paint tiles. Paired portals connect matching digits. Design, playtest and share your own anomalies.</p>
+      <div class="editor-workspace"><div>
+        <div class="editor-board-wrap"><div class="editor-board" aria-label="Chamber design grid">${tiles}</div></div>
+        <div class="editor-toolbar" aria-label="Tile palette">${EDITOR_TILES.map(t => `<button type="button" data-editor-tool="${t}" class="editor-tool ${t === this.brush ? 'active' : ''}" title="${names[t]}" aria-pressed="${t === this.brush}">${t === '.' ? '·' : t}</button>`).join('')}</div>
+        <p class="editor-tool-hint">SELECT A TILE → PAINT ON THE GRID. S AND X ARE UNIQUE. EACH PORTAL DIGIT MUST APPEAR TWICE.</p>
+      </div><div class="editor-settings"><strong>CHAMBER PARAMETERS</strong>
+        <label class="editor-field">NAME<input id="editorName" value="${escape(this.draft.name)}" maxlength="35" spellcheck="false"/></label>
+        <label class="editor-field">BEATS PER LOOP<input id="editorTicks" type="number" min="5" max="60" value="${this.draft.maxTicks}"/></label>
+        <label class="editor-field">MAXIMUM ECHOES<select id="editorEchoes">${[0, 1, 2, 3].map(n => `<option value="${n}" ${n === this.draft.maxEchoes ? 'selected' : ''}>${n}</option>`).join('')}</select></label>
+        ${['A', 'B', 'C'].map(g => `<label class="editor-field">GATE ${g} REQUIRES<input id="editorGate${g}" value="${escape(this.draft.circuits[g])}" maxlength="20" spellcheck="false" placeholder="a,b" /></label>`).join('')}
+        <div id="editorValidation" class="${errors.length ? 'editor-error' : 'editor-valid'}">${errors.length ? errors.map(escape).join(' · ') : '✓ READY FOR PLAYTEST'}</div>
+      </div></div>
+      <div class="editor-actions"><button type="button" class="button primary" data-editor-action="test" ${errors.length ? 'disabled' : ''}>▶ PLAYTEST</button>
+        <button type="button" class="button outlined" data-editor-action="export">↓ EXPORT JSON</button>
+        <button type="button" class="button outlined" data-editor-action="import">↑ IMPORT JSON</button>
+        <button type="button" class="button subdued" data-editor-action="reset">↺ RESET DESIGN</button></div>
+      <input class="is-hidden" id="editorFile" type="file" accept=".json,application/json" aria-label="Import custom level JSON"/>`;
+    }
+    mount(root, onPlay, notify) {
+        this.listeners?.abort();
+        this.listeners = new AbortController();
+        const signal = this.listeners.signal;
+        const refresh = () => { root.innerHTML = this.render(); this.save(); };
+        const validate = () => {
+            const errors = validateDraft(this.draft);
+            const status = root.querySelector('#editorValidation');
+            if (status) {
+                status.className = errors.length ? 'editor-error' : 'editor-valid';
+                status.textContent = errors.join(' · ') || '✓ READY FOR PLAYTEST';
+            }
+            const test = root.querySelector('[data-editor-action="test"]');
+            if (test)
+                test.disabled = errors.length > 0;
+            this.save();
+        };
+        const updateFields = () => {
+            const value = (id) => root.querySelector(`#${id}`)?.value ?? '';
+            this.draft = { ...this.draft, name: value('editorName').slice(0, 35), maxTicks: Number(value('editorTicks')),
+                maxEchoes: Number(value('editorEchoes')), circuits: {
+                    A: value('editorGateA'), B: value('editorGateB'), C: value('editorGateC'),
+                } };
+            validate();
+        };
+        const paint = (cell) => {
+            const coords = cell.dataset.editorCell?.split(',').map(Number);
+            if (!coords || coords.length !== 2)
+                return;
+            const next = paintTile(this.draft, coords[0], coords[1], this.brush);
+            if (next === this.draft)
+                return;
+            this.draft = next;
+            refresh();
+        };
+        root.addEventListener('input', e => {
+            if (e.target.matches('.editor-field input,.editor-field select'))
+                updateFields();
+        }, { signal });
+        root.addEventListener('change', e => {
+            const target = e.target;
+            if (target.id === 'editorFile' && target.files?.[0]) {
+                const file = target.files[0];
+                if (file.size > 15000) {
+                    notify('LEVEL FILE TOO LARGE');
+                    return;
+                }
+                file.text().then(text => {
+                    try {
+                        this.draft = importLevel(text);
+                        refresh();
+                        notify('LEVEL LOADED · READY TO PLAYTEST');
+                    }
+                    catch (error) {
+                        notify(`INVALID LEVEL · ${error instanceof Error ? error.message : 'Bad file'}`);
+                    }
+                });
+            }
+            else if (target.matches('.editor-field input,.editor-field select'))
+                updateFields();
+        }, { signal });
+        root.addEventListener('click', e => {
+            const target = e.target.closest('[data-editor-tool],[data-editor-cell],[data-editor-action]');
+            if (!target)
+                return;
+            e.stopPropagation();
+            if (target.dataset.editorTool) {
+                this.brush = target.dataset.editorTool;
+                refresh();
+                return;
+            }
+            if (target.dataset.editorCell) {
+                paint(target);
+                return;
+            }
+            switch (target.dataset.editorAction) {
+                case 'test': {
+                    const errors = validateDraft(this.draft);
+                    if (errors.length) {
+                        notify(`FIX THE LEVEL · ${errors.join(' · ')}`);
+                        return;
+                    }
+                    this.save();
+                    onPlay(draftToLevel(this.draft));
+                    break;
+                }
+                case 'export': {
+                    const blob = new Blob([exportLevel(this.draft)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'echo-shift-custom-level.json';
+                    a.click();
+                    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+                    notify('LEVEL EXPORTED');
+                    break;
+                }
+                case 'import':
+                    root.querySelector('#editorFile')?.click();
+                    break;
+                case 'reset':
+                    this.draft = newDraft();
+                    this.brush = '#';
+                    refresh();
+                    notify('NEW TEMPLATE LOADED');
+                    break;
+            }
+        }, { signal });
+        root.addEventListener('pointerover', e => {
+            if (e.buttons !== 1 || e.pointerType === 'touch')
+                return;
+            const cell = e.target.closest('[data-editor-cell]');
+            if (cell)
+                paint(cell);
+        }, { signal });
+        refresh();
+    }
+}
+
 // app
 const $ = (selector) => {
     const element = document.querySelector(selector);
@@ -868,6 +1266,8 @@ let inspectedTick = null;
 let hintVisible = false;
 let toastTimer = 0;
 let modalType = null;
+let customMode = false;
+const lab = new LevelLab();
 const sound = new Soundscape();
 sound.enabled = progress.sound;
 const renderer = new GameRenderer($('#gameCanvas'), () => state, () => progress.reducedMotion);
@@ -889,6 +1289,7 @@ function changeLevel(index) {
         notify('Chamber locked. Clear the previous chamber first.');
         return;
     }
+    customMode = false;
     state = newSession(LEVELS[index]);
     inspectedTick = null;
     renderer.setInspectTick(null);
@@ -922,7 +1323,8 @@ function input(action) {
     if (result.event === 'finish') {
         sound.play('win');
         const index = LEVELS.indexOf(state.level);
-        progress = recordWin(progress, index, state.level.id, { moves: totalMoves(state), echoes: state.echoes.length });
+        if (!customMode)
+            progress = recordWin(progress, index, state.level.id, { moves: totalMoves(state), echoes: state.echoes.length });
         renderHud();
         window.setTimeout(() => openModal('win'), 500);
         return;
@@ -1002,7 +1404,7 @@ function renderHud() {
     const index = LEVELS.indexOf(state.level);
     $('#chamberNumber').textContent = state.level.id;
     $('#chamberName').textContent = state.level.name;
-    $('#levelLabel').textContent = `CHAMBER ${state.level.id} / 09`;
+    $('#levelLabel').textContent = customMode ? 'CUSTOM EXPERIMENT' : `CHAMBER ${state.level.id} / ${LEVELS.length}`;
     $('#actLabel').textContent = state.level.chapter;
     $('#briefing').textContent = state.level.briefing;
     $('#stepsValue').textContent = `${String(state.tick).padStart(2, '0')} / ${String(state.level.maxTicks).padStart(2, '0')}`;
@@ -1020,8 +1422,8 @@ function renderHud() {
     $('#undoButton').toggleAttribute('disabled', state.frames.length === 0 || state.complete);
     $('#retryButton').toggleAttribute('disabled', state.frames.length === 0 || state.complete);
     $('#soundButton').textContent = progress.sound ? 'SOUND ON' : 'SOUND OFF';
-    $('#prevLevel').toggleAttribute('disabled', index === 0);
-    $('#nextLevel').toggleAttribute('disabled', index + 1 >= progress.unlocked || index + 1 >= LEVELS.length);
+    $('#prevLevel').toggleAttribute('disabled', customMode || index === 0);
+    $('#nextLevel').toggleAttribute('disabled', customMode || index + 1 >= progress.unlocked || index + 1 >= LEVELS.length);
     const slots = $('#echoSlots');
     slots.innerHTML = Array.from({ length: state.level.maxEchoes }, (_, i) => {
         const echo = state.echoes[i];
@@ -1029,7 +1431,8 @@ function renderHud() {
     }).join('') || `<div class="empty-echo">NO ECHO RECORDINGS IN THIS CHAMBER<br><small>Your first move changes everything.</small></div>`;
     const sources = Object.entries(state.level.gates);
     const enabled = gatesOpen(state);
-    $('#circuitList').innerHTML = sources.length ? sources.map(([gate, plates]) => `<div class="circuit"><span class="circuit-gate">${gate}</span><span>GATE ${gate}</span><span class="circuit-state ${enabled.has(gate) ? 'open' : ''}">${enabled.has(gate) ? 'ONLINE' : plates.map(p => p.toUpperCase()).join(' + ') + ' REQUIRED'}</span></div>`).join('') : '<div class="circuit-no-gates">NO ACTIVE CIRCUITS · DIRECT EXTRACTION</div>';
+    const portals = [...new Set(state.level.map.join('').match(/[0-9]/g) ?? [])];
+    $('#circuitList').innerHTML = (sources.length ? sources.map(([gate, plates]) => `<div class="circuit"><span class="circuit-gate">${gate}</span><span>GATE ${gate}</span><span class="circuit-state ${enabled.has(gate) ? 'open' : ''}">${enabled.has(gate) ? 'ONLINE' : plates.map(p => p.toUpperCase()).join(' + ') + ' REQUIRED'}</span></div>`).join('') : '<div class="circuit-no-gates">NO ACTIVE CIRCUITS · DIRECT EXTRACTION</div>') + portals.map(p => `<div class="circuit"><span class="circuit-gate" style="color:#dbb5ff;border-color:#78539d">${p}</span><span>RIFT PORTAL ${p}</span><span class="circuit-state open">PAIRED</span></div>`).join('');
     renderTracks();
 }
 function closeModal() {
@@ -1049,7 +1452,7 @@ function openModal(name) {
     overlay.setAttribute('aria-hidden', 'false');
     const root = $('#modalBody');
     if (name === 'welcome') {
-        root.innerHTML = `<div class="welcome-glow"></div>${modalShell('TRANSMISSION 001 / SYSTEM ONLINE', 'YOU ARE NOT <em>ALONE.</em>', 'Your future depends on the decisions your past self makes. Record a timeline. Leave an echo. Escape the experiment.', `<div class="welcome-features"><span><b>09</b> CHAMBERS</span><span><b>03</b> ACTS</span><span><b>∞</b> POSSIBILITIES</span></div>
+        root.innerHTML = `<div class="welcome-glow"></div>${modalShell('TRANSMISSION 001 / SYSTEM ONLINE', 'YOU ARE NOT <em>ALONE.</em>', 'Your future depends on the decisions your past self makes. Record a timeline. Leave an echo. Escape the experiment.', `<div class="welcome-features"><span><b>12</b> CHAMBERS</span><span><b>04</b> ACTS</span><span><b>∞</b> POSSIBILITIES</span></div>
       <div class="modal-actions"><button class="button primary huge" data-action="start">ENTER THE EXPERIMENT <span>↗</span></button><button class="button subdued" data-action="help">HOW TO PLAY</button></div>`, `<p class="micro-note">DESIGNED & ENGINEERED WITH ZERO EXTERNAL GAME ASSETS</p>`)}`;
     }
     else if (name === 'help') {
@@ -1058,19 +1461,24 @@ function openModal(name) {
         <div class="help-item"><span class="help-num">02</span><div><h3>RECORD AN ECHO</h3><p>Stand on a switch and press <kbd>R</kbd>. Your entire previous path becomes an echo that replays each beat in the next loop.</p></div></div>
         <div class="help-item"><span class="help-num">03</span><div><h3>COORDINATE</h3><p>Echoes can activate switches and keep holding their last position. Gates only open when all required switches are occupied.</p></div></div>
         <div class="help-item"><span class="help-num">04</span><div><h3>REWRITE YOUR STRATEGY</h3><p>Press <kbd>Z</kbd> to undo, <kbd>X</kbd> to retry the active loop, or use the timeline inspector to study a recorded move.</p></div></div>
+        <div class="help-item"><span class="help-num">05</span><div><h3>RIFT PORTALS</h3><p>Numbered portals come in pairs. Step on one to arrive at its twin; recorded echoes replay the arrival tile.</p></div></div>
+        <div class="help-item"><span class="help-num">06</span><div><h3>LEVEL LAB</h3><p>Open Level Lab from the main menu to draw custom chambers, playtest, or share them as JSON.</p></div></div>
       </div><div class="modal-actions"><button class="button primary" data-action="close">UNDERSTOOD <span>→</span></button></div>`);
+    }
+    else if (name === 'editor') {
+        lab.mount(root, (level) => { customMode = true; state = newSession(level); closeModal(); setInspection(null); renderHud(); notify('CUSTOM EXPERIMENT LOADED'); }, notify);
     }
     else if (name === 'levels') {
         root.innerHTML = modalShell('THE EXPERIMENT / CHAMBER INDEX', 'SELECT A <em>TIMELINE.</em>', 'Complete chambers to unlock more of the experiment.', `<div class="levels-grid">${LEVELS.map((level, i) => `<button class="level-card ${i >= progress.unlocked ? 'locked' : ''} ${state.level.id === level.id ? 'active' : ''}" data-level="${i}" ${i >= progress.unlocked ? 'disabled' : ''}>
-        <span class="level-index">${level.id} / 09</span><span class="level-medal">${progress.wins[level.id] ? '◆ CLEARED' : i >= progress.unlocked ? '⌁ LOCKED' : '◉ AVAILABLE'}</span>
+        <span class="level-index">${level.id} / ${LEVELS.length}</span><span class="level-medal">${progress.wins[level.id] ? '◆ CLEARED' : i >= progress.unlocked ? '⌁ LOCKED' : '◉ AVAILABLE'}</span>
         <strong>${level.name}</strong><small>${level.subtitle}</small><span class="level-bottom">${i < progress.unlocked ? `${level.maxEchoes} ECHO SLOTS` : 'UNAVAILABLE'} <span>↗</span></span></button>`).join('')}</div>`);
     }
     else if (name === 'win') {
         const index = LEVELS.indexOf(state.level);
-        const final = index === LEVELS.length - 1;
-        const score = progress.wins[state.level.id];
+        const final = !customMode && index === LEVELS.length - 1;
+        const score = customMode ? undefined : progress.wins[state.level.id];
         root.innerHTML = `<div class="victory-mark">✧</div>${modalShell('EXTRACTION LOG / CHAMBER CLEARED', final ? 'PARADOX <em>RESOLVED.</em>' : 'TIMELINE <em>STABILIZED.</em>', final ? 'You outsmarted the entire experiment. Every version of you made this moment possible.' : 'A path appeared where there was none. Your past selves did their part.', `<div class="result-grid"><div><strong>${String(totalMoves(state)).padStart(2, '0')}</strong><small>TOTAL BEATS</small></div><div><strong>${state.echoes.length}</strong><small>ECHOES USED</small></div><div><strong>${score ? String(score.moves).padStart(2, '0') : '—'}</strong><small>PERSONAL BEST</small></div></div>
-      <div class="modal-actions">${!final ? `<button class="button primary" data-action="next">NEXT CHAMBER <span>↗</span></button>` : `<button class="button primary" data-action="levels">REVISIT CHAMBERS <span>↗</span></button>`}<button class="button subdued" data-action="replay">REPLAY CHAMBER</button><button class="button subdued" data-action="export">SAVE REPLAY</button></div>`)}`;
+      <div class="modal-actions">${customMode ? `<button class="button primary" data-action="editor">EDIT CHAMBER <span>↗</span></button>` : !final ? `<button class="button primary" data-action="next">NEXT CHAMBER <span>↗</span></button>` : `<button class="button primary" data-action="levels">REVISIT CHAMBERS <span>↗</span></button>`}<button class="button subdued" data-action="replay">REPLAY CHAMBER</button><button class="button subdued" data-action="export">SAVE REPLAY</button></div>`)}`;
     }
     else if (name === 'settings') {
         root.innerHTML = modalShell('ENVIRONMENT CONFIGURATION', 'SYSTEM <em>SETTINGS.</em>', 'Adjust the experiment to your preferences.', `<div class="setting-row"><div><strong>SYNTHESIZED SOUND</strong><span>Generated entirely in the browser. No audio files.</span></div><button class="button outlined" data-action="toggle-sound">${progress.sound ? 'ENABLED' : 'DISABLED'}</button></div>
@@ -1097,11 +1505,11 @@ function exportCurrent() {
     notify('Replay exported as JSON.');
 }
 const buttonActions = {
-    start: () => closeModal(), close: () => closeModal(), help: () => openModal('help'), levels: () => openModal('levels'),
+    start: () => closeModal(), close: () => closeModal(), help: () => openModal('help'), levels: () => openModal('levels'), editor: () => openModal('editor'),
     settings: () => openModal('settings'), next: () => changeLevel(Math.min(LEVELS.length - 1, LEVELS.indexOf(state.level) + 1)),
     replay: () => { closeModal(); performRestart(); },
     reset: () => openModal('reset'), 'confirm-reset': () => openModal('reset'),
-    'clear-save': () => { progress = clearProgress(); state = newSession(LEVELS[0]); closeModal(); renderHud(); notify('Progress erased. Experiment rebooted.'); },
+    'clear-save': () => { progress = clearProgress(); customMode = false; state = newSession(LEVELS[0]); closeModal(); renderHud(); notify('Progress erased. Experiment rebooted.'); },
     'toggle-sound': () => { progress = { ...progress, sound: !progress.sound }; saveProgress(progress); sound.enabled = progress.sound; openModal('settings'); renderHud(); },
     'toggle-motion': () => { progress = { ...progress, reducedMotion: !progress.reducedMotion }; saveProgress(progress); openModal('settings'); },
     rewind: () => performRewind(), undo: () => performUndo(), retry: () => performRetry(), restart: () => performRestart(),
@@ -1112,7 +1520,7 @@ const buttonActions = {
             if (data.length > 50000)
                 throw new Error('Replay is too large');
             state = importReplay(state.level, data);
-            if (state.complete)
+            if (state.complete && !customMode)
                 progress = recordWin(progress, LEVELS.indexOf(state.level), state.level.id, { moves: totalMoves(state), echoes: state.echoes.length });
             closeModal();
             setInspection(null);

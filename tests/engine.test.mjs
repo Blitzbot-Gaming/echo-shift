@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { LEVELS, validateLevel } from '../docs/js/levels.js';
-import { advance, echoPosition, exportReplay, gatesOpen, importReplay, locate, newSession, plateSignals, restart, retry, rewind, undo } from '../docs/js/engine.js';
+import { advance, portalDestination, echoPosition, exportReplay, gatesOpen, importReplay, locate, newSession, plateSignals, restart, retry, rewind, undo } from '../docs/js/engine.js';
+
+import { newDraft, paintTile, draftToLevel, validateDraft, exportLevel, importLevel } from '../docs/js/editor.js';
 
 const actions = ['up', 'right', 'down', 'left', 'wait'];
 
@@ -49,7 +51,7 @@ test('all chambers pass structural validation', () => {
   for (const level of LEVELS) assert.deepEqual(validateLevel(level), [], level.id);
 });
 
-test('all nine chambers are solvable within their beat and echo budgets', () => {
+test('all twelve chambers are solvable within their beat and echo budgets', () => {
   for (const level of LEVELS) {
     const { session } = solve(level);
     assert.ok(session.tick <= level.maxTicks, level.id);
@@ -132,4 +134,45 @@ test('recorder cannot add more echoes than a chamber permits', () => {
   const { session } = solve(LEVELS[1]);
   const after = rewind(session);
   assert.equal(after, session); // completed sessions are immutable
+});
+
+
+test('rift portals teleport the player and persist correct resolved echo positions', () => {
+  let session = newSession(LEVELS[9]);
+  for (const action of ['right','right','down','down']) session = advance(session, action).state;
+  assert.deepEqual(session.player, { x: 9, y: 3 });
+  assert.deepEqual(portalDestination(LEVELS[9], { x: 9, y: 3 }), { x: 3, y: 3 });
+  assert.equal(session.frames.at(-1).x, 9);
+  assert.equal(session.frames.at(-1).y, 3);
+  const restored = importReplay(LEVELS[9], exportReplay(session));
+  assert.deepEqual(restored.player, session.player);
+});
+
+test('all rift chambers are actually completed, not simply traversable', () => {
+  for (const level of LEVELS.slice(9)) {
+    const { session } = solve(level);
+    assert.equal(session.complete, true, level.id);
+  }
+});
+
+test('level lab painting moves the unique start and validates portal pairs', () => {
+  const original = newDraft();
+  assert.deepEqual(validateDraft(original), []);
+  const moved = paintTile(original, 2, 1, 'S');
+  assert.equal(moved.map[1][1], '.');
+  assert.equal(moved.map[1][2], 'S');
+  assert.equal(original.map[1][1], 'S');
+  const unpaired = paintTile(moved, 3, 1, '0');
+  assert.match(validateDraft(unpaired).join(' '), /Portal 0/);
+  const paired = paintTile(unpaired, 4, 1, '0');
+  assert.deepEqual(validateDraft(paired), []);
+  assert.equal(draftToLevel(paired).map[1][4], '0');
+});
+
+test('level lab JSON round trip and hostile or broken inputs are rejected', () => {
+  const draft = newDraft();
+  assert.deepEqual(importLevel(exportLevel(draft)), draft);
+  assert.throws(() => importLevel('garbage'), /SyntaxError|JSON/);
+  assert.throws(() => importLevel(JSON.stringify({ ...JSON.parse(exportLevel(draft)), name: '<img onerror=alert(1)>' })), /Name/);
+  assert.throws(() => importLevel(JSON.stringify({ ...JSON.parse(exportLevel(draft)), map: ['#'] })), /structure/);
 });

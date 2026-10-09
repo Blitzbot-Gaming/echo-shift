@@ -31,6 +31,8 @@ export interface StepResult {
 }
 export declare function same(a: Position, b: Position): boolean;
 export declare function tile(level: Level, point: Position): string;
+/** Portal endpoints always come in pairs. Only players teleport; echo frames store the resolved landing tile. */
+export declare function portalDestination(level: Level, point: Position): Position | null;
 export declare function locate(level: Level, symbol: string): Position;
 export declare function newSession(level: Level): Session;
 /** Echoes hold their final recorded position once their playback finishes. */

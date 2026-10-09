@@ -152,6 +152,57 @@ export const LEVELS = [
         ],
         maxTicks: 23, maxEchoes: 3, gates: { C: ['a', 'b', 'c'] }, accent: '#ffc277',
     },
+    {
+        id: '10', chapter: 'ACT IV · THE RIFT', name: 'Folded Space', subtitle: 'Distance is an illusion.',
+        briefing: 'Paired rift portals fold the chamber in two. Step into either matching digit to emerge at the other.',
+        hint: 'The violet rift connects the two halves of the map. Enter the portal marked 0.',
+        map: [
+            '#############',
+            '#S....#.....#',
+            '#.....#.....#',
+            '#..0..#..0..#',
+            '#.....#...X.#',
+            '#.....#.....#',
+            '#.....#.....#',
+            '#.....#.....#',
+            '#############',
+        ],
+        maxTicks: 15, maxEchoes: 0, gates: {}, accent: '#c49cff',
+    },
+    {
+        id: '11', chapter: 'ACT IV · THE RIFT', name: 'Pocket Dimension', subtitle: 'Leave a signal behind.',
+        briefing: 'A rift reaches an isolated switch. Record your echo there, then return to cross the sealed gate.',
+        hint: 'Take portal 0 to reach switch a. Record the echo, take the portal again and cross gate A.',
+        map: [
+            '###############',
+            '#S.....#......#',
+            '#....0.#......#',
+            '#.....##......#',
+            '#.....#a#.....#',
+            '#.....#0A..X..#',
+            '#.....###.....#',
+            '#......#......#',
+            '###############',
+        ],
+        maxTicks: 18, maxEchoes: 1, gates: { A: ['a'] }, accent: '#a9c5ff',
+    },
+    {
+        id: '12', chapter: 'ACT IV · THE RIFT', name: 'Dual Entanglement', subtitle: 'Two rifts. One exit.',
+        briefing: 'Two pocket dimensions hide the only switches that can open the last circuit.',
+        hint: 'First take portal 0 to hold a. Next take portal 1 to hold b. On the final loop enter 0, wait until both echoes activate their switches, then cross C.',
+        map: [
+            '###############',
+            '#S.....#......#',
+            '#..0...#......#',
+            '#.....#a#.....#',
+            '#.....#0#.....#',
+            '#.....#.C..X..#',
+            '#..1..#1#.....#',
+            '#.....#b#.....#',
+            '###############',
+        ],
+        maxTicks: 21, maxEchoes: 2, gates: { C: ['a', 'b'] }, accent: '#d19afa',
+    },
 ];
 export function getLevel(id) {
     const level = LEVELS.find(level => level.id === id);
@@ -175,12 +226,20 @@ export function validateLevel(level) {
         errors.push('Exactly one exit required');
     if (level.maxTicks < 1 || level.maxEchoes < 0)
         errors.push('Invalid timeline limits');
+    if (!Number.isInteger(level.maxTicks) || level.maxTicks > 60 || !Number.isInteger(level.maxEchoes) || level.maxEchoes > 3)
+        errors.push('Timeline limits exceed supported range');
+    if (width > 21 || height > 15)
+        errors.push('Map must be no larger than 21×15');
     for (const symbol of flat) {
-        if ('#.SX'.includes(symbol) || /^[a-z]$/.test(symbol))
+        if ('#.SX'.includes(symbol) || /^[a-z0-9]$/.test(symbol))
             continue;
         if (/^[A-Z]$/.test(symbol) && level.gates[symbol])
             continue;
         errors.push(`Unknown map symbol ${symbol}`);
+    }
+    for (const digit of new Set(flat.match(/[0-9]/g) ?? [])) {
+        if (flat.split(digit).length !== 3)
+            errors.push(`Portal ${digit} requires exactly two endpoints`);
     }
     for (const [door, plates] of Object.entries(level.gates)) {
         if (!flat.includes(door))

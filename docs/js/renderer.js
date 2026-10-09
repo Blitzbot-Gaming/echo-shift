@@ -112,7 +112,7 @@ export class GameRenderer {
         ctx.fillText('SPATIAL ANOMALY DETECTED', W - 45, 53);
         ctx.textAlign = 'left';
         ctx.fillStyle = '#25394f';
-        ctx.fillText('SYNC_GRID · v1.0', 42, H - 48);
+        ctx.fillText('SYNC_GRID · v1.1', 42, H - 48);
         ctx.textAlign = 'right';
         ctx.fillText('ECHO//SHIFT  —  THE PARADOX PROTOCOL', W - 42, H - 48);
         ctx.textAlign = 'left';
@@ -201,6 +201,22 @@ export class GameRenderer {
                     ctx.fillStyle = active ? color : '#7295aa';
                     ctx.fillText(symbol.toUpperCase(), px + size - 10, py + size - 10);
                     ctx.textAlign = 'left';
+                }
+                if (/^[0-9]$/.test(symbol)) {
+                    const pulse = this.reduceMotion() ? 0 : Math.sin(t * 2.2 + Number(symbol)) * .08;
+                    ctx.save();
+                    ctx.shadowColor = '#bc9cff';
+                    ctx.shadowBlur = 19;
+                    ring(ctx, cx, cy, size * (.31 + pulse), '#d3aaff', 3);
+                    ctx.shadowBlur = 0;
+                    ring(ctx, cx, cy, size * .20, '#8760d7', 2);
+                    disk(ctx, cx, cy, size * .10, '#6341a5');
+                    ctx.fillStyle = '#fff2ff';
+                    ctx.font = '700 12px ui-monospace, monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(symbol, cx, cy);
+                    ctx.textAlign = 'left';
+                    ctx.restore();
                 }
                 if (symbol in state.level.gates) {
                     const active = open.has(symbol);
