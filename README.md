@@ -5,17 +5,17 @@
 
 **Your past is playable.**
 
-A sci-fi time-loop puzzle game about cooperating with recordings of your past self to escape nine experimental chambers.
+A sci-fi time-loop puzzle game about cooperating with recordings of your past self to escape twelve experimental chambers.
 
-![Illustrated gameplay overview](./docs/gameplay-overview.svg)
+![Actual in-game screenshot of ECHO//SHIFT](./docs/gameplay.webp)
 
-*Gameplay overview illustration · [Launch ECHO//SHIFT](./index.html)*
+*In-game capture from ECHO//SHIFT v1.1 · [Play now](https://blitzbot-gaming.github.io/echo-shift/)*
 
 **[Play ECHO//SHIFT](https://blitzbot-gaming.github.io/echo-shift/)** · **[Architecture notes](./ARCHITECTURE.md)**
 
 </div>
 
-> The browser-playable game is included in `index.html` and `docs/index.html`. The online play link will work after GitHub Pages is enabled.
+> **Version 1.1:** New rift portals, three additional chambers, and Level Lab for creating and testing puzzles.
 
 ## About the game
 
@@ -25,9 +25,11 @@ ECHO//SHIFT combines turn-based, grid-based puzzles with a timeline inspector th
 
 ## Features
 
-- **Nine chambers** spread across three acts.
+- **Twelve chambers** across four acts, including three new rift-portal puzzles.
 - **Time-loop echoes** that replay your movements and hold their last position.
 - **Circuit-based puzzles** with switches and doors.
+- **Paired rift portals** that teleport the player across the board.
+- **Level Lab:** paint custom rooms, wire switches to gates, playtest, save local drafts, and import/export levels as JSON.
 - **Timeline inspector** for reviewing recorded moves.
 - **Undo, rewind and restart** controls.
 - **Keyboard and touch** support.
@@ -62,7 +64,7 @@ No installation is required for the standalone HTML build.
 4. Your echo repeats your earlier route while you move independently.
 5. Coordinate with it to keep gates open and reach the exit.
 
-Later levels introduce more echoes and more complex circuits.
+Later levels introduce more echoes, complex circuits and paired rift portals. Open **Level Lab** from the game menu to design and test your own rooms.
 
 ## Technology
 
@@ -114,8 +116,8 @@ The GitHub Actions workflow compiles the TypeScript and runs the Node.js test su
 3. Select **main** and **/ (root)**.
 4. Save and wait for deployment.
 
-The live game URL will be **https://blitzbot-gaming.github.io/echo-shift/**.
+Play the latest version at **https://blitzbot-gaming.github.io/echo-shift/**.
 
 ## License
 
-See [LICENSE](./LICENSE) if present. The game interface uses original procedural visuals and does not require externally hosted art assets.
+See [LICENSE](./LICENSE). The game interface uses original procedural visuals and does not require externally hosted art assets.
