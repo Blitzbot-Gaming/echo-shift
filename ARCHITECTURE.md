@@ -1,6 +1,6 @@
 # Architecture — ECHO//SHIFT
 
-This document describes the systems so that reviewers can evaluate the implementation, and beginners can learn the design choices.
+This document describes the game's systems, simulation rules, rendering pipeline, persistence, and testing approach.
 
 ## Runtime dependency graph
 
