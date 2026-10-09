@@ -3,13 +3,17 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "Bundler",
-    "lib": ["ES2022", "DOM"],
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "lib": ["ES2022", "DOM"],
     "rootDir": "src",
     "outDir": "docs/js",
     "declaration": true,
     "sourceMap": true,
-    "skipLibCheck": true
+    "isolatedModules": true
   },
   "include": ["src/**/*.ts"]
 }

@@ -1,0 +1,13 @@
+{
+  "format": "echo-shift/replay-v1",
+  "level": "02",
+  "echoes": [
+    ["right", "right", "down", "down"]
+  ],
+  "current": [
+    "right", "right", "right", "right",
+    "down", "down", "down",
+    "right", "right", "right", "right", "right"
+  ],
+  "complete": true
+}
